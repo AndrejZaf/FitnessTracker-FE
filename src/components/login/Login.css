@@ -1,0 +1,40 @@
+.custom-background {
+  background-image: url("../../static/fitness-69.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-container-login {
+  max-width: 500px;
+}
+
+.custom-form-control {
+  border-top: transparent !important;
+  border-left: transparent !important;
+  border-right: transparent !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: white !important;
+}
+
+form,
+.custom-form-control {
+  color: white !important;
+}
+
+.custom-form-control:focus {
+  border-color: white !important;
+  outline: 0;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
+}
+
+.button-custom-size {
+  width: 100%;
+}
+
+.custom-login-row {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}

@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import Home from "./pages/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Exercises from "./pages/Exercises";
+import Workouts from "./pages/Workouts";
+import Programs from "./pages/Programs";
+import Login from "./components/login/Login";
+import { Fragment } from "react";
+import SignUp from "./components/sign-up/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Fragment>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
+            <Fragment>
+              <Header />
+              <Route exact path="/" component={Home} />
+              <Route path="/exercises" component={Exercises} />
+              <Route path="/workouts" component={Workouts} />
+              <Route path="/programs" component={Programs} />
+              <Footer />
+            </Fragment>
+          </Switch>
+        </Fragment>
+      </Router>
+    </>
   );
 }
 

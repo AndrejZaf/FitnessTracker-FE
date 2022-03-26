@@ -1,0 +1,9 @@
+.btn-check:active + .btn-light,
+.btn-check:checked + .btn-light,
+.btn-light.active,
+.btn-light:active,
+.show > .btn-light.dropdown-toggle {
+  color: #fff;
+  background-color: #8587dc !important;
+  border-color: #8587dc !important;
+}

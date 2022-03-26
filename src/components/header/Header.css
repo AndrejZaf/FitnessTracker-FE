@@ -1,0 +1,36 @@
+.borderless-button {
+  border-color: transparent !important;
+  color: #8587dc !important;
+}
+
+.borderless-button:hover {
+  background-color: #acadff !important;
+  color: white !important;
+}
+
+.borderless-button:active {
+  background-color: #acadff !important;
+  color: white !important;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0.25rem rgb(133 135 220 / 50%) !important;
+}
+
+.nav-link {
+  color: #acadff !important;
+  font-weight: 500 !important;
+}
+
+.nav-link:hover {
+  color: #8587dc !important;
+  transition: 0.3s;
+}
+
+.active {
+  color: #754ffe !important;
+}
+
+.active:hover {
+  color: #754ffe !important;
+}

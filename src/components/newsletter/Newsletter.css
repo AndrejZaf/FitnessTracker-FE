@@ -1,0 +1,15 @@
+.newsletter-bg {
+  background: rgb(65, 134, 211);
+  background: linear-gradient(
+    215deg,
+    rgba(65, 134, 211, 1) 0%,
+    rgba(173, 111, 218, 1) 100%,
+    rgba(9, 9, 121, 1) 100%
+  );
+  border-radius: 0.25rem;
+  height: 200px;
+}
+
+.custom-form {
+  margin-top: 15px !important;
+}
