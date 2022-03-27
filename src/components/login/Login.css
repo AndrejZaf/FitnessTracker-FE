@@ -38,3 +38,8 @@ form,
   padding-right: 1rem;
   padding-left: 1rem;
 }
+
+.text-red {
+  color: red;
+  font-weight: 600;
+}

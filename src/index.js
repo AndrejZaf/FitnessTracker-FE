@@ -3,10 +3,25 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import store from "./store/Store";
+import { Provider } from "react-redux";
+import { retrieveUser } from "./services/UserService";
+import { setCurrentUser, toggleLoading } from "./store/StoreFacade";
+
+if (localStorage.getItem("accessToken")) {
+  toggleLoading();
+  retrieveUser().then((response) => {
+    setCurrentUser(response.data);
+    console.log(response);
+    toggleLoading();
+  });
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

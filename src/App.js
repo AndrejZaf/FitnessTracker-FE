@@ -10,6 +10,7 @@ import Programs from "./pages/Programs";
 import Login from "./components/login/Login";
 import { Fragment } from "react";
 import SignUp from "./components/sign-up/SignUp";
+import UserSettings from "./pages/Settings";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/exercises" component={Exercises} />
               <Route path="/workouts" component={Workouts} />
               <Route path="/programs" component={Programs} />
+              <Route path="/settings" component={UserSettings} />
               <Footer />
             </Fragment>
           </Switch>
