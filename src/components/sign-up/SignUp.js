@@ -187,6 +187,19 @@ export default function SignUp(props) {
             >
               Sign Up
             </button>
+            <div className="text-center">
+              <small className="text-white">
+                By signing up you agree to our{" "}
+                <Link to="/privacy-policy" className="text-white fw-bold">
+                  privacy policy
+                </Link>{" "}
+                and{" "}
+                <Link to="/terms-and-conditions" className="text-white fw-bold">
+                  terms & conditions
+                </Link>
+                .
+              </small>
+            </div>
           </form>
           <div className="text-end">
             <Link to="/forgot-password" className="text-white">

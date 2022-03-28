@@ -14,7 +14,7 @@ export default function Newsletter() {
           <div className="col-md">
             <form className="custom-form row g-3">
               <div className="col-auto">
-                <label for="inputEmail" className="visually-hidden">
+                <label htmlFor="inputEmail" className="visually-hidden">
                   Email
                 </label>
                 <input

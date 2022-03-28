@@ -11,6 +11,9 @@ import Login from "./components/login/Login";
 import { Fragment } from "react";
 import SignUp from "./components/sign-up/SignUp";
 import UserSettings from "./pages/Settings";
+import Dashboard from "./pages/Dashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 
 function App() {
   return (
@@ -24,9 +27,12 @@ function App() {
               <Header />
               <Route exact path="/" component={Home} />
               <Route path="/exercises" component={Exercises} />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/workouts" component={Workouts} />
               <Route path="/programs" component={Programs} />
               <Route path="/settings" component={UserSettings} />
+              <Route path="/privacy-policy" component={PrivacyPolicy} />
+              <Route path="/terms-and-conditions" component={TermsConditions} />
               <Footer />
             </Fragment>
           </Switch>

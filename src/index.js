@@ -10,11 +10,11 @@ import { setCurrentUser, toggleLoading } from "./store/StoreFacade";
 
 if (localStorage.getItem("accessToken")) {
   toggleLoading();
-  retrieveUser().then((response) => {
-    setCurrentUser(response.data);
-    console.log(response);
-    toggleLoading();
-  });
+  retrieveUser()
+    .then((response) => {
+      setCurrentUser(response.data);
+    })
+    .finally(() => toggleLoading());
 }
 
 ReactDOM.render(

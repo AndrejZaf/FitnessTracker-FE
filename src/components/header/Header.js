@@ -62,6 +62,15 @@ export default function Header(props) {
               Home
             </NavLink>
           </li>
+          {isLoggedin ? (
+            <li>
+              <NavLink to="/dashboard" className={`nav-link px-2 link-dark`}>
+                Dashboard
+              </NavLink>
+            </li>
+          ) : (
+            ""
+          )}
           <li>
             <NavLink to="/exercises" className={`nav-link px-2 link-dark`}>
               Exercises
