@@ -1,7 +1,7 @@
 import * as actions from "./ActionTypes";
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   currentUser: {
     email: null,
     uid: null,

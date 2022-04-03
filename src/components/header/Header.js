@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import store from "../../store/Store";
-import {
-  clearCurrentUser,
-  getCurrentUser,
-  isLoading,
-} from "../../store/StoreFacade";
+import { clearCurrentUser, getCurrentUser } from "../../store/StoreFacade";
 import "./Header.css";
 
 export default function Header(props) {
   const [isLoggedin, setIsLoggedin] = useState(false);
 
+  const unsubscribe = store.subscribe(() => {
+    setIsLoggedin(store.getState().currentUser.email !== null);
+  });
+
   useEffect(() => {
     setIsLoggedin(getCurrentUser().email !== null);
+    return () => unsubscribe();
   }, []);
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -32,7 +33,6 @@ export default function Header(props) {
   function logout() {
     localStorage.clear();
     clearCurrentUser();
-    // TODO: Potentially change this with store subscription
     setIsLoggedin(getCurrentUser().email !== null);
   }
 

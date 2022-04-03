@@ -1,0 +1,20 @@
+.muscle-groups {
+  margin-bottom: 15px;
+}
+
+.page-header {
+  height: 200px;
+  background-color: #acadff;
+  background-image: url("../static/sports-18.jpg");
+  background-position-y: 30%;
+  background-repeat: no-repeat;
+}
+
+.custom-link {
+  color: unset;
+  text-decoration: unset;
+}
+
+.custom-link:hover {
+  color: unset;
+}

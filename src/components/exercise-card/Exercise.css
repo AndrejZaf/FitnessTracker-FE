@@ -1,0 +1,48 @@
+.custom-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.25rem;
+  border: 1px solid #acadff;
+  cursor: pointer;
+  min-height: 130px;
+}
+
+@media (min-width: 768px) {
+  .custom-card {
+    min-height: 125px;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-card {
+    min-height: 125px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-card {
+    min-height: 125px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .custom-card {
+    min-height: 100px;
+  }
+}
+
+.me-lg-3 {
+  margin-right: unset !important;
+}
+
+.exercise-details {
+  margin-bottom: unset;
+  font-size: 15px;
+}
+
+.title {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 18px;
+}

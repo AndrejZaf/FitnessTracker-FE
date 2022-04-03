@@ -14,6 +14,7 @@ import UserSettings from "./pages/Settings";
 import Dashboard from "./pages/Dashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import ExerciseDetails from "./components/exercise-details/ExerciseDetails";
 
 function App() {
   return (
@@ -26,13 +27,14 @@ function App() {
             <Fragment>
               <Header />
               <Route exact path="/" component={Home} />
-              <Route path="/exercises" component={Exercises} />
+              <Route path="/exercises" component={Exercises} exact={true} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/workouts" component={Workouts} />
               <Route path="/programs" component={Programs} />
               <Route path="/settings" component={UserSettings} />
               <Route path="/privacy-policy" component={PrivacyPolicy} />
               <Route path="/terms-and-conditions" component={TermsConditions} />
+              <Route path={"/exercises/:uid"} component={ExerciseDetails} />
               <Footer />
             </Fragment>
           </Switch>

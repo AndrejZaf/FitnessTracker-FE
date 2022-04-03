@@ -9,7 +9,7 @@ import { retrieveUser } from "./services/UserService";
 import { setCurrentUser, toggleLoading } from "./store/StoreFacade";
 
 if (localStorage.getItem("accessToken")) {
-  toggleLoading();
+  // toggleLoading();
   retrieveUser()
     .then((response) => {
       setCurrentUser(response.data);

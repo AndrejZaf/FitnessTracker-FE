@@ -1,0 +1,27 @@
+.bottom-container {
+  margin-top: -20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding-top: 70px;
+  padding-right: 5%;
+  padding-left: 5%;
+  background-color: white;
+}
+
+.left-text {
+  color: #6c757d;
+  font-weight: 700;
+}
+
+.right-text {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.theme-link {
+  color: #acadff;
+}
+
+.theme-link:hover {
+  color: #8587dc;
+}

@@ -1,0 +1,9 @@
+.back-button {
+  cursor: pointer;
+}
+
+.back-button svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
