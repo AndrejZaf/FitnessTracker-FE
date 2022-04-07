@@ -1,0 +1,7 @@
+.page-header-workouts {
+  height: 200px;
+  background-color: #acadff;
+  background-image: url("../static/fitness-66.jpg");
+  background-position-y: 30%;
+  background-repeat: no-repeat;
+}

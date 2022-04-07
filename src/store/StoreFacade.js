@@ -29,6 +29,7 @@ export function setCurrentUser(userData) {
       height: userData.height,
       weight: userData.weight,
       imageUrl: userData.imageUrl,
+      workouts: userData.workouts,
     },
   });
 }

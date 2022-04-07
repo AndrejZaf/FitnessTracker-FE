@@ -98,7 +98,7 @@ export default function Exercises() {
 
   return (
     <>
-      <div className="page-header text-white d-flex justify-content-center">
+      <div className="page-header-exercises text-white d-flex justify-content-center">
         <div className="align-self-center ">
           <h1>Exercises</h1>
         </div>

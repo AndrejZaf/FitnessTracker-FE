@@ -9,6 +9,7 @@ const initialState = {
     height: null,
     measurementSystem: null,
     imageUrl: null,
+    workouts: [],
   },
 };
 
@@ -25,6 +26,7 @@ export default function reducer(state = initialState, action) {
           height: action.payload.height,
           measurementSystem: action.payload.measurementSystem,
           imageUrl: action.payload.imageUrl,
+          workouts: action.payload.workouts,
         },
       };
     case actions.CLEAR_CURRENT_USER:
@@ -38,6 +40,7 @@ export default function reducer(state = initialState, action) {
           height: null,
           measurementSystem: null,
           imageUrl: null,
+          workouts: [],
         },
       };
     case actions.TOGGLE_LOADING: {

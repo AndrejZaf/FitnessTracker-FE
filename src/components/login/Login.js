@@ -51,7 +51,6 @@ export default function Login(props) {
         // }
         retrieveUser().then((response) => {
           setCurrentUser(response.data);
-
           props.history.push("/");
         });
       })
