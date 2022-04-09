@@ -103,79 +103,87 @@ export default function Exercises() {
           <h1>Exercises</h1>
         </div>
       </div>
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-md-2 text-center">
-            <button
-              className="btn btn-light purple-button text-white mb-3"
-              onClick={clearFilters}
-            >
-              Clear filters
-            </button>
-            <div className="row models">
-              <div className="col-lg-12 col-md-12 col-sm-6 col-6">
-                <div className="model">
-                  <Model
-                    data={musclesData}
-                    highlightedColors={["#8587DC"]}
-                    onClick={debouncedHandleMuscleClick}
-                  />
+      <div className="bottom-container">
+        <div className="container mt-4">
+          <div className="row">
+            <div className="col-md-2 text-center">
+              <button
+                className="btn btn-light purple-button text-white mb-3"
+                onClick={clearFilters}
+              >
+                Clear filters
+              </button>
+              <div className="row models">
+                <div className="col-lg-12 col-md-12 col-sm-6 col-6">
+                  <div className="model">
+                    <Model
+                      data={musclesData}
+                      highlightedColors={["#8587DC"]}
+                      onClick={debouncedHandleMuscleClick}
+                    />
+                  </div>
                 </div>
-              </div>
-              <br />
-              <div className="col-lg-12 col-md-12 col-sm-6 col-6">
-                <div className="model">
-                  <Model
-                    type="posterior"
-                    data={musclesData}
-                    highlightedColors={["#8587DC"]}
-                    onClick={debouncedHandleMuscleClick}
-                    className="model2"
-                  />
+                <br />
+                <div className="col-lg-12 col-md-12 col-sm-6 col-6">
+                  <div className="model">
+                    <Model
+                      type="posterior"
+                      data={musclesData}
+                      highlightedColors={["#8587DC"]}
+                      onClick={debouncedHandleMuscleClick}
+                      className="model2"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-10">
-            <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input
-                type="search"
-                className="form-control mb-3"
-                placeholder="Search..."
-                aria-label="Search"
-                value={searchBar()}
-                onChange={(event) => {
-                  setSearchBar(event.target.value);
-                  debounceSearchInput(event);
-                }}
-              />
-            </form>
-            <InfiniteScroll
-              dataLength={data().length} //This is important field to render the next data
-              next={() => fetchData(page(), selectedMuscle(), searchBar())}
-              hasMore={hasMoreData}
-              style={{ overflowX: "hidden" }}
-              loader={<h4>Loading...</h4>}
-              endMessage={
-                <p style={{ textAlign: "center" }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
-              }
-            >
-              <div className="row">
-                {data().map((item, index) => (
-                  <div key={index} className="col-lg-4 col-md-6 col-sm-6 mb-4">
-                    <Link to={`/exercises/${item.uid}`} className="custom-link">
-                      <ExerciseCard
-                        name={item.name}
-                        target={item.target}
-                        equipment={item.equipment}
-                      ></ExerciseCard>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </InfiniteScroll>
+            <div className="col-md-10">
+              <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input
+                  type="search"
+                  className="form-control mb-3"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  value={searchBar()}
+                  onChange={(event) => {
+                    setSearchBar(event.target.value);
+                    debounceSearchInput(event);
+                  }}
+                />
+              </form>
+              <InfiniteScroll
+                dataLength={data().length} //This is important field to render the next data
+                next={() => fetchData(page(), selectedMuscle(), searchBar())}
+                hasMore={hasMoreData}
+                style={{ overflowX: "hidden" }}
+                loader={<h4>Loading...</h4>}
+                endMessage={
+                  <p style={{ textAlign: "center" }}>
+                    <b>Yay! You have seen it all</b>
+                  </p>
+                }
+              >
+                <div className="row">
+                  {data().map((item, index) => (
+                    <div
+                      key={index}
+                      className="col-lg-4 col-md-6 col-sm-6 mb-4"
+                    >
+                      <Link
+                        to={`/exercises/${item.uid}`}
+                        className="custom-link"
+                      >
+                        <ExerciseCard
+                          name={item.name}
+                          target={item.target}
+                          equipment={item.equipment}
+                        ></ExerciseCard>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </InfiniteScroll>
+            </div>
           </div>
         </div>
       </div>

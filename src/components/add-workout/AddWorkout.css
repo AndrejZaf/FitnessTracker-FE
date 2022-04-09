@@ -1,0 +1,91 @@
+/* .modal-footer {
+  justify-content: space-between;
+} */
+
+.add-workout-form {
+  color: gray !important;
+}
+
+.exercises-list {
+  max-height: 150px;
+  min-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.exercise {
+  cursor: pointer;
+}
+
+.modal-back-button {
+  cursor: pointer;
+  fill: black;
+}
+
+.modal-back-button svg {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.sets-list {
+  max-height: 150px;
+  min-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 10px;
+}
+
+.add-set-button {
+  cursor: pointer;
+  fill: black;
+}
+
+.add-set-button svg {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.delete-set-button {
+  cursor: pointer;
+  fill: black;
+}
+
+.delete-set-button svg {
+  height: 25px;
+  width: 25px;
+  margin-left: 10px;
+}
+
+.vertical-grip-button {
+  cursor: pointer;
+  fill: black;
+}
+
+.vertical-grip-button svg {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+.delete-row-button {
+  cursor: pointer;
+  fill: black;
+  margin-right: 15px;
+}
+
+.delete-row-button svg {
+  height: 20px;
+  width: 20px;
+}
+
+.edit-row-button {
+  cursor: pointer;
+  fill: black;
+}
+
+.edit-row-button svg {
+  height: 20px;
+  width: 20px;
+}

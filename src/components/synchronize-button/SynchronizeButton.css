@@ -1,0 +1,9 @@
+.synchronize-button {
+  cursor: pointer;
+}
+
+.synchronize-button svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}

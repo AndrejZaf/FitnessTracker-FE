@@ -1,0 +1,9 @@
+.add-exercise-button {
+  cursor: pointer;
+}
+
+.add-exercise-button svg {
+  fill: black;
+  width: 25px;
+  height: 25px;
+}

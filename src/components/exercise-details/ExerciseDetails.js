@@ -14,17 +14,15 @@ export default function ExerciseDetails(props) {
   }, []);
   return (
     <>
-      <div className="page-header text-white">
-        <div className="d-flex justify-content-between">
-          <div className="ms-5 mt-3">
-            <BackButton />
-          </div>
-          <div className="me-5 mt-3">
-            <AddWorkoutButton />
-          </div>
+      <div className="page-header-exercises text-white d-flex justify-content-between">
+        <div className="ms-5 mt-3">
+          <BackButton />
         </div>
-        <div className="d-flex justify-content-center">
+        <div className="align-self-center">
           <h1>{exercise.name}</h1>
+        </div>
+        <div className="me-5 mt-3">
+          <AddWorkoutButton />
         </div>
       </div>
       <div className="bottom-container">

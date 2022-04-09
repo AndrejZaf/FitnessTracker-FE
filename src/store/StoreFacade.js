@@ -9,6 +9,10 @@ export function getCurrentUser() {
   return getStoreState().currentUser;
 }
 
+export function getUserWorkouts() {
+  return getStoreState().workouts;
+}
+
 export function isLoading() {
   return getStoreState().isLoading;
 }
