@@ -16,18 +16,27 @@ export default function AddWorkout({ showModal, test }) {
   };
   const [show, setShow] = useState(showModal);
   const [exercises, setExercises] = useState([]);
+  const [exerciseIndex, setExerciseIndex] = useState(0);
   const [section, setSection] = useState("General");
   const [selectedExercise, setSelectedExercise] = useState({});
   const [setIndex, setSetIndex] = useState(1);
   const [setItems, setSetItems] = useState([dummyRow]);
   const [editExercise, setEditExercise] = useState({});
-
   const handleClose = () => {
     test();
     setShow(false);
   };
 
   function switchSection(newSection) {
+    if (
+      section === "Exercise" &&
+      newSection === "General" &&
+      Object.keys(editExercise).length !== 0
+    ) {
+      setEditExercise({});
+      setSetItems([dummyRow]);
+      setSetIndex(1);
+    }
     setSection(newSection);
   }
 
@@ -54,7 +63,11 @@ export default function AddWorkout({ showModal, test }) {
             text={selectedExercise.name}
             backButton={true}
             changeSection={switchSection}
-            section="Add Exercise"
+            section={
+              Object.keys(editExercise).length === 0
+                ? "Add Exercise"
+                : "General"
+            }
           />
         );
       default:
@@ -132,14 +145,21 @@ export default function AddWorkout({ showModal, test }) {
             <Button
               variant="primary"
               onClick={() => {
-                setExercises([
-                  ...exercises,
-                  {
-                    uid: selectedExercise.uid,
-                    name: selectedExercise.name,
-                    sets: [...setItems],
-                  },
-                ]);
+                setExerciseIndex(exerciseIndex + 1);
+                if (Object.keys(editExercise).length === 0) {
+                  setExercises([
+                    ...exercises,
+                    {
+                      id: exerciseIndex,
+                      uid: selectedExercise.uid,
+                      name: selectedExercise.name,
+                      sets: [...setItems],
+                    },
+                  ]);
+                } else {
+                  selectedExercise.sets = setItems;
+                }
+                setEditExercise({});
                 setSetItems([dummyRow]);
                 setSetIndex(1);
                 switchSection("General");

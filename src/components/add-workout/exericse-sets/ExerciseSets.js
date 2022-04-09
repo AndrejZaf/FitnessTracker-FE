@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import AddSetButton from "../add-set-button/AddSetButton";
 import SetRow from "../set-row/SetRow";
@@ -11,12 +11,13 @@ export default function ExerciseSets({
   setSetIndex,
   editExercise,
 }) {
-  useEffect(() => {
-    // if (Object.keys(editExercise).length !== 0) {
-    //   setSetItems(editExercise.sets);
-    //   setSetIndex(`${editExercise.sets.length + 1}`);
-    // }
-  });
+  console.log(editExercise);
+  useLayoutEffect(() => {
+    if (Object.keys(editExercise).length !== 0) {
+      setSetItems(editExercise.sets);
+      setSetIndex(editExercise.sets.length + 1);
+    }
+  }, [exercise]);
 
   const onDragEnd = (result) => {
     if (setItems.length === 1 || result.destination === null) return;
@@ -27,8 +28,8 @@ export default function ExerciseSets({
   };
 
   const addAnotherSet = () => {
-    console.log(setIndex);
     const index = setIndex + 1;
+    console.log(setIndex);
     setSetIndex(index);
     setSetItems([
       ...setItems,

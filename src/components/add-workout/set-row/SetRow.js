@@ -7,6 +7,25 @@ export default function SetRow({ provided, snapshot, set, deleteRow }) {
   const [weight, setWeight] = useState(set.weight);
   const [restPeriod, setRestPeriod] = useState(set.restPeriod);
 
+  function handleFieldUpdate(newValue, field) {
+    switch (field) {
+      case "Reps":
+        set.reps = newValue;
+        setReps(newValue);
+        break;
+      case "Weight":
+        set.weight = newValue;
+        setWeight(newValue);
+        break;
+      case "Rest Period":
+        set.restPeriod = newValue;
+        setRestPeriod(newValue);
+        break;
+      default:
+        return;
+    }
+  }
+
   return (
     <div
       className="d-flex align-items-center mt-2"
@@ -27,7 +46,8 @@ export default function SetRow({ provided, snapshot, set, deleteRow }) {
                 className="form-control"
                 placeholder="Repetitions"
                 aria-label="reps"
-                onChange={(e) => (set.reps = e.target.value)}
+                value={reps}
+                onChange={(e) => handleFieldUpdate(e.target.value, "Reps")}
               />
             </div>
             <div className="col">
@@ -36,7 +56,8 @@ export default function SetRow({ provided, snapshot, set, deleteRow }) {
                 className="form-control"
                 placeholder="Weight"
                 aria-label="weight"
-                onChange={(e) => (set.weight = e.target.value)}
+                value={weight}
+                onChange={(e) => handleFieldUpdate(e.target.value, "Weight")}
               />
             </div>
 
@@ -46,7 +67,10 @@ export default function SetRow({ provided, snapshot, set, deleteRow }) {
                 className="form-control"
                 placeholder="Rest Period (In seconds)"
                 aria-label="rest-period"
-                onChange={(e) => (set.restPeriod = e.target.value)}
+                value={restPeriod}
+                onChange={(e) =>
+                  handleFieldUpdate(e.target.value, "Rest Period")
+                }
               />
             </div>
           </div>
