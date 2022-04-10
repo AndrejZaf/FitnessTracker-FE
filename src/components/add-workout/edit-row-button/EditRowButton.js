@@ -10,7 +10,10 @@ export default function EditRowButton({
   return (
     <div
       onClick={() => {
-        setSetItems(exercise.sets);
+        const newExerciseState = exercise.sets.map(
+          (set, index) => (set = { id: `${index}`, ...set })
+        );
+        setSetItems(newExerciseState);
         setSelectedExercise(exercise);
         setEditExercise(exercise);
         changeSection("Exercise");

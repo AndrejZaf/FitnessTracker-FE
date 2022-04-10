@@ -85,6 +85,22 @@ export default function reducer(state = initialState, action) {
         },
       };
     }
+    case actions.UPDATE_WORKOUT: {
+      const index = state.currentUser.workouts.findIndex(
+        (workout) => workout.uid === action.payload.uid
+      );
+      let editedWorkout = { ...state.currentUser.workouts[index] };
+      editedWorkout = { ...action.payload.workout, uid: action.payload.uid };
+      let newWorkoutsState = [...state.currentUser.workouts];
+      newWorkoutsState[index] = editedWorkout;
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          workouts: newWorkoutsState,
+        },
+      };
+    }
     default:
       return state;
   }

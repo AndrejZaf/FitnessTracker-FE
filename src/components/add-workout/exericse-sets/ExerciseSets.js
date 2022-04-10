@@ -9,15 +9,7 @@ export default function ExerciseSets({
   setSetItems,
   setIndex,
   setSetIndex,
-  editExercise,
 }) {
-  useLayoutEffect(() => {
-    if (Object.keys(editExercise).length !== 0) {
-      setSetItems(editExercise.sets);
-      setSetIndex(editExercise.sets.length + 1);
-    }
-  }, [exercise]);
-
   const onDragEnd = (result) => {
     if (setItems.length === 1 || result.destination === null) return;
     const newItems = setItems;

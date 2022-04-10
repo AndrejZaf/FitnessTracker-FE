@@ -6,7 +6,12 @@ import FocusModeButton from "../focus-mode-button/FocusModeButton";
 import { toggleLoading } from "./../../store/StoreFacade";
 import { deleteWorkoutByUid as storeDeleteWorkoutByUid } from "./../../store/StoreFacade";
 
-export default function WorkoutsTable({ workouts }) {
+export default function WorkoutsTable({
+  workouts,
+  handleAddWorkoutButton,
+  setEditWorkout,
+  setFocusMode,
+}) {
   function deleteWorkout(uid) {
     toggleLoading();
     deleteWorkoutByUid(uid)
@@ -33,8 +38,15 @@ export default function WorkoutsTable({ workouts }) {
             <td>{workout.name}</td>
             <td>{workout.exercises.length}</td>
             <td className="d-flex justify-content-end">
-              <FocusModeButton />
-              <EditButton />
+              <FocusModeButton
+                workoutUid={workout.uid}
+                setFocusMode={setFocusMode}
+              />
+              <EditButton
+                handleAddWorkoutButton={handleAddWorkoutButton}
+                workout={workout}
+                setEditWorkout={setEditWorkout}
+              />
               <DeleteButton deleteWorkout={deleteWorkout} uid={workout.uid} />
             </td>
           </tr>

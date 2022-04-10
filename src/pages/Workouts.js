@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddWorkout from "../components/add-workout/AddWorkout";
 import EmptyButton from "../components/empty-button/EmptyButton";
+import FocusMode from "../components/focus-mode/FocusMode";
 import SynchronizeButton from "../components/synchronize-button/SynchronizeButton";
 import WorkoutsTable from "../components/workouts-table/WorkoutsTable";
 import store from "../store/Store";
@@ -10,6 +11,7 @@ import "./Workouts.css";
 export default function Workouts() {
   const [workouts, setWorkouts] = useState(getUserWorkouts());
   const [showModal, setShowModal] = useState(false);
+  const [editWorkout, setEditWorkout] = useState({});
 
   useEffect(() => {
     const unsubscribe = store.subscribe(() =>
@@ -31,7 +33,12 @@ export default function Workouts() {
   return (
     <>
       {showModal ? (
-        <AddWorkout showModal={showModal} hideModal={hideAddWorkout} />
+        <AddWorkout
+          showModal={showModal}
+          hideModal={hideAddWorkout}
+          workout={editWorkout}
+          setEditWorkout={setEditWorkout}
+        />
       ) : (
         ""
       )}
@@ -70,28 +77,32 @@ export default function Workouts() {
                 one by clicking on the "Add Workout" button
               </p>
             ) : (
-              <WorkoutsTable workouts={workouts} />
+              <WorkoutsTable
+                setEditWorkout={setEditWorkout}
+                handleAddWorkoutButton={handleAddWorkoutButton}
+                workouts={workouts}
+              />
             )}
           </div>
 
           {/* <div className="admin-workouts mb-4">
             <h2 className="pb-2 border-bottom">Trending Workouts</h2>
           </div> */}
-          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-              <div class="ratio ratio-16x9">
+          <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div className="col-10 col-sm-8 col-lg-6">
+              <div className="ratio ratio-16x9">
                 <iframe
                   src="https://www.youtube.com/embed/9g08kucPQtE?controls=0"
                   title="YouTube video"
-                  allowfullscreen
+                  allowFullScreen={true}
                 ></iframe>
               </div>
             </div>
-            <div class="col-lg-6">
-              <h1 class="display-5 fw-bold lh-1 mb-3">
+            <div className="col-lg-6">
+              <h1 className="display-5 fw-bold lh-1 mb-3">
                 Create Your Own Personalized Workout
               </h1>
-              <p class="lead">
+              <p className="lead">
                 With our creation wizard you can quickly create your own
                 workout, where you can target the desired muscles. Additionally
                 for each exercise in the workout you can determine how many sets

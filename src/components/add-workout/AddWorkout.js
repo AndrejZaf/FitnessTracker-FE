@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import "./AddWorkout.css";
@@ -6,11 +6,19 @@ import AddWorkoutGeneral from "./general/AddWorkoutGeneral";
 import AddExercise from "./add-exercise/AddExercise";
 import ExerciseSets from "./exericse-sets/ExerciseSets";
 import ModalHeader from "./modal-header/ModalHeader";
-import { createWorkout } from "../../services/WorkoutService";
-import { toggleLoading, updateUserWorkouts } from "./../../store/StoreFacade";
+import { createWorkout, updateWorkout } from "../../services/WorkoutService";
+import {
+  toggleLoading,
+  updateUserWorkouts,
+  updateWorkoutByUid,
+} from "./../../store/StoreFacade";
 
-// Implement Edit and Focus Moded
-export default function AddWorkout({ showModal, hideModal, workout }) {
+export default function AddWorkout({
+  showModal,
+  hideModal,
+  workout,
+  setEditWorkout,
+}) {
   const dummyRow = {
     id: "1",
     weight: "",
@@ -26,10 +34,24 @@ export default function AddWorkout({ showModal, hideModal, workout }) {
   const [setItems, setSetItems] = useState([dummyRow]);
   const [editExercise, setEditExercise] = useState({});
   const [workoutName, setWorkoutName] = useState("");
+  const [editMode, setEditMode] = useState(false);
+
+  useEffect(() => {
+    console.log(workout);
+    if (Object.keys(workout).length !== 0) {
+      setWorkoutName(workout.name);
+      setExercises(workout.exercises);
+      setEditMode(true);
+    }
+  }, [workout]);
 
   const handleClose = () => {
     hideModal();
     setShow(false);
+    setEditMode(false);
+    setWorkoutName("");
+    setExercises([]);
+    setEditWorkout({});
   };
 
   function switchSection(newSection) {
@@ -50,18 +72,26 @@ export default function AddWorkout({ showModal, hideModal, workout }) {
   }
 
   function submitWorkoutCreation() {
-    let workout = {
+    let upsertWorkout = {
       name: workoutName,
       exercises: exercises,
     };
-    toggleLoading();
-    createWorkout(workout)
-      .then((response) => {
-        workout = { ...workout, uid: response.data.uid };
-        updateUserWorkouts(workout);
-      })
-      .finally(() => toggleLoading());
-    setShow(false);
+    if (editMode) {
+      toggleLoading();
+      updateWorkout(workout.uid, upsertWorkout)
+        .then(() => updateWorkoutByUid(workout.uid, upsertWorkout))
+        .finally(() => toggleLoading());
+      setEditMode(false);
+    } else {
+      toggleLoading();
+      createWorkout(upsertWorkout)
+        .then((response) => {
+          upsertWorkout = { ...upsertWorkout, uid: response.data.uid };
+          updateUserWorkouts(upsertWorkout);
+        })
+        .finally(() => toggleLoading());
+    }
+    handleClose();
   }
 
   function renderTitle(section) {
@@ -125,7 +155,6 @@ export default function AddWorkout({ showModal, hideModal, workout }) {
             setSetItems={setSetItems}
             setIndex={setIndex}
             setSetIndex={setSetIndex}
-            editExercise={editExercise}
           />
         );
       default:

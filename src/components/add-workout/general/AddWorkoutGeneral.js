@@ -38,7 +38,9 @@ export default function AddWorkoutGeneral({
             name="workout-name"
             placeholder="Workout Name"
             value={workoutName}
-            onChange={(e) => setWorkoutName(e.target.value)}
+            onChange={(e) => {
+              setWorkoutName(e.target.value);
+            }}
             autoFocus={true}
           />
           <label htmlFor="workout-name">Workout Name</label>

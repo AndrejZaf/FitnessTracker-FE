@@ -1,8 +1,16 @@
 import React from "react";
 
-export default function EditButton() {
+export default function EditButton({
+  handleAddWorkoutButton,
+  workout,
+  setEditWorkout,
+}) {
   return (
     <div
+      onClick={() => {
+        setEditWorkout(workout);
+        handleAddWorkoutButton();
+      }}
       className="edit-button"
       data-bs-toggle="tooltip"
       data-bs-placement="top"

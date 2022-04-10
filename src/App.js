@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import ExerciseDetails from "./components/exercise-details/ExerciseDetails";
+import FocusMode from "./components/focus-mode/FocusMode";
 
 function App() {
   return (
@@ -24,12 +25,13 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/workouts/:uid/focus" component={FocusMode} />
             <Fragment>
               <Header />
               <Route exact path="/" component={Home} />
-              <Route path="/exercises" component={Exercises} exact={true} />
+              <Route path="/exercises" component={Exercises} exact />
               <Route path="/dashboard" component={Dashboard} />
-              <Route path="/workouts" component={Workouts} />
+              <Route path="/workouts" component={Workouts} exact />
               <Route path="/programs" component={Programs} />
               <Route path="/settings" component={UserSettings} />
               <Route path="/privacy-policy" component={PrivacyPolicy} />

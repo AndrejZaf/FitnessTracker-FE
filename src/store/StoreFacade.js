@@ -62,6 +62,16 @@ export function fetchWorkouts(newWorkouts) {
   });
 }
 
+export function updateWorkoutByUid(uid, upsertWorkout) {
+  store.dispatch({
+    type: actions.UPDATE_WORKOUT,
+    payload: {
+      uid: uid,
+      workout: upsertWorkout,
+    },
+  });
+}
+
 export function deleteWorkoutByUid(uid) {
   store.dispatch({
     type: actions.DELETE_WORKOUT_BY_UID,
