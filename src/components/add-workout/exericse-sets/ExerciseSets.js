@@ -11,7 +11,6 @@ export default function ExerciseSets({
   setSetIndex,
   editExercise,
 }) {
-  console.log(editExercise);
   useLayoutEffect(() => {
     if (Object.keys(editExercise).length !== 0) {
       setSetItems(editExercise.sets);
@@ -29,17 +28,14 @@ export default function ExerciseSets({
 
   const addAnotherSet = () => {
     const index = setIndex + 1;
-    console.log(setIndex);
     setSetIndex(index);
     setSetItems([
       ...setItems,
       { id: `${index}`, weight: "", reps: "", restPeriod: "" },
     ]);
-    console.log(setItems);
   };
 
   const removeSet = (index) => {
-    console.log(index);
     const list = [...setItems];
     list.splice(index, 1);
     setSetItems(list);

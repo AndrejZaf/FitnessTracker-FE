@@ -10,7 +10,7 @@ export function getCurrentUser() {
 }
 
 export function getUserWorkouts() {
-  return getStoreState().workouts;
+  return getStoreState().currentUser.workouts;
 }
 
 export function isLoading() {
@@ -41,6 +41,33 @@ export function setCurrentUser(userData) {
 export function clearCurrentUser() {
   store.dispatch({
     type: actions.CLEAR_CURRENT_USER,
+  });
+}
+
+export function updateUserWorkouts(newWorkout) {
+  store.dispatch({
+    type: actions.ADD_NEW_WORKOUT,
+    payload: {
+      workout: newWorkout,
+    },
+  });
+}
+
+export function fetchWorkouts(newWorkouts) {
+  store.dispatch({
+    type: actions.FETCH_WORKOUTS,
+    payload: {
+      workouts: newWorkouts,
+    },
+  });
+}
+
+export function deleteWorkoutByUid(uid) {
+  store.dispatch({
+    type: actions.DELETE_WORKOUT_BY_UID,
+    payload: {
+      uid: uid,
+    },
   });
 }
 

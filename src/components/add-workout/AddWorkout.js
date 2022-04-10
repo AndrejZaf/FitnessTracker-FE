@@ -6,8 +6,11 @@ import AddWorkoutGeneral from "./general/AddWorkoutGeneral";
 import AddExercise from "./add-exercise/AddExercise";
 import ExerciseSets from "./exericse-sets/ExerciseSets";
 import ModalHeader from "./modal-header/ModalHeader";
+import { createWorkout } from "../../services/WorkoutService";
+import { toggleLoading, updateUserWorkouts } from "./../../store/StoreFacade";
 
-export default function AddWorkout({ showModal, test }) {
+// Implement Edit and Focus Moded
+export default function AddWorkout({ showModal, hideModal, workout }) {
   const dummyRow = {
     id: "1",
     weight: "",
@@ -22,8 +25,10 @@ export default function AddWorkout({ showModal, test }) {
   const [setIndex, setSetIndex] = useState(1);
   const [setItems, setSetItems] = useState([dummyRow]);
   const [editExercise, setEditExercise] = useState({});
+  const [workoutName, setWorkoutName] = useState("");
+
   const handleClose = () => {
-    test();
+    hideModal();
     setShow(false);
   };
 
@@ -42,6 +47,21 @@ export default function AddWorkout({ showModal, test }) {
 
   function selectExercise(exercise) {
     setSelectedExercise(exercise);
+  }
+
+  function submitWorkoutCreation() {
+    let workout = {
+      name: workoutName,
+      exercises: exercises,
+    };
+    toggleLoading();
+    createWorkout(workout)
+      .then((response) => {
+        workout = { ...workout, uid: response.data.uid };
+        updateUserWorkouts(workout);
+      })
+      .finally(() => toggleLoading());
+    setShow(false);
   }
 
   function renderTitle(section) {
@@ -85,6 +105,8 @@ export default function AddWorkout({ showModal, test }) {
             setSelectedExercise={setSelectedExercise}
             setSetItems={setSetItems}
             setEditExercise={setEditExercise}
+            setWorkoutName={setWorkoutName}
+            workoutName={workoutName}
             changeSection={switchSection}
           />
         );
@@ -121,7 +143,7 @@ export default function AddWorkout({ showModal, test }) {
             </Button>
             <Button
               variant="primary"
-              onClick={handleClose}
+              onClick={submitWorkoutCreation}
               className="purple-button"
             >
               Save Changes

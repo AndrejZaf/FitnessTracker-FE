@@ -1,9 +1,19 @@
 import React from "react";
+import { getWorkoutsForUser } from "../../services/WorkoutService";
 import "./SynchronizeButton.css";
+import { fetchWorkouts, toggleLoading } from "./../../store/StoreFacade";
 
 export default function SynchronizeButton() {
+  function synchronizeWorkouts() {
+    toggleLoading();
+    getWorkoutsForUser()
+      .then((response) => {
+        fetchWorkouts(response.data);
+      })
+      .finally(() => toggleLoading());
+  }
   return (
-    <div className="synchronize-button">
+    <div className="synchronize-button" onClick={synchronizeWorkouts}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import * as actions from "./ActionTypes";
 
 const initialState = {
@@ -49,6 +50,38 @@ export default function reducer(state = initialState, action) {
         isLoading: !state.isLoading,
         currentUser: {
           ...state.currentUser,
+        },
+      };
+    }
+    case actions.ADD_NEW_WORKOUT: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          workouts: [...state.currentUser.workouts, action.payload.workout],
+        },
+      };
+    }
+    case actions.FETCH_WORKOUTS: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          workouts: action.payload.workouts,
+        },
+      };
+    }
+    case actions.DELETE_WORKOUT_BY_UID: {
+      const index = state.currentUser.workouts.findIndex(
+        (workout) => workout.uid === action.payload.uid
+      );
+      let newWorkoutsState = [...state.currentUser.workouts];
+      newWorkoutsState.splice(index, 1);
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          workouts: newWorkoutsState,
         },
       };
     }

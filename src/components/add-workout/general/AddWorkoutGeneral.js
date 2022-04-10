@@ -10,6 +10,8 @@ export default function AddWorkoutGeneral({
   setSelectedExercise,
   setSetItems,
   setEditExercise,
+  setWorkoutName,
+  workoutName,
 }) {
   const onDragEnd = (result) => {
     if (exercises.length === 1 || result.destination === null) return;
@@ -35,7 +37,8 @@ export default function AddWorkoutGeneral({
             id="workout-name"
             name="workout-name"
             placeholder="Workout Name"
-            onChange={(e) => console.log(e.target.value)}
+            value={workoutName}
+            onChange={(e) => setWorkoutName(e.target.value)}
             autoFocus={true}
           />
           <label htmlFor="workout-name">Workout Name</label>

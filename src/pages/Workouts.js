@@ -2,15 +2,23 @@ import React, { useEffect, useState } from "react";
 import AddWorkout from "../components/add-workout/AddWorkout";
 import EmptyButton from "../components/empty-button/EmptyButton";
 import SynchronizeButton from "../components/synchronize-button/SynchronizeButton";
+import WorkoutsTable from "../components/workouts-table/WorkoutsTable";
+import store from "../store/Store";
 import { getUserWorkouts } from "../store/StoreFacade";
 import "./Workouts.css";
 
 export default function Workouts() {
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState(getUserWorkouts());
   const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
-    setWorkouts(getUserWorkouts());
-  });
+    const unsubscribe = store.subscribe(() =>
+      setWorkouts(store.getState().currentUser.workouts)
+    );
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   function handleAddWorkoutButton() {
     setShowModal(true);
@@ -23,7 +31,7 @@ export default function Workouts() {
   return (
     <>
       {showModal ? (
-        <AddWorkout showModal={showModal} test={hideAddWorkout} />
+        <AddWorkout showModal={showModal} hideModal={hideAddWorkout} />
       ) : (
         ""
       )}
@@ -56,12 +64,56 @@ export default function Workouts() {
                 </button>
               </div>
             </div>
-
-            {/* Content goes here */}
+            {workouts.length === 0 ? (
+              <p>
+                Currently you don't have any workouts, feel free to create a new
+                one by clicking on the "Add Workout" button
+              </p>
+            ) : (
+              <WorkoutsTable workouts={workouts} />
+            )}
           </div>
 
-          <div className="admin-workouts mb-4">
+          {/* <div className="admin-workouts mb-4">
             <h2 className="pb-2 border-bottom">Trending Workouts</h2>
+          </div> */}
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img
+                src="bootstrap-themes.png"
+                class="d-block mx-lg-auto img-fluid"
+                alt="Bootstrap Themes"
+                width="700"
+                height="500"
+                loading="lazy"
+              />
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold lh-1 mb-3">
+                Responsive left-aligned hero with image
+              </h1>
+              <p class="lead">
+                Quickly design and customize responsive mobile-first sites with
+                Bootstrap, the world’s most popular front-end open source
+                toolkit, featuring Sass variables and mixins, responsive grid
+                system, extensive prebuilt components, and powerful JavaScript
+                plugins.
+              </p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg px-4 me-md-2"
+                >
+                  Primary
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-lg px-4"
+                >
+                  Default
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
