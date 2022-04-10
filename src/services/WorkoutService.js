@@ -47,3 +47,14 @@ export async function deleteWorkoutByUid(uid) {
   };
   return await axios.delete(`http://localhost:8080/api/workout/${uid}`, config);
 }
+
+export async function getWorkoutByUid(uid) {
+  const token = localStorage.getItem("accessToken");
+  const bearerToken = `Bearer ${token}`;
+  const config = {
+    headers: {
+      Authorization: bearerToken,
+    },
+  };
+  return await axios.get(`http://localhost:8080/api/workout/${uid}`, config);
+}

@@ -62,7 +62,7 @@ export default function Header(props) {
               Home
             </NavLink>
           </li>
-          {isLoggedin ? (
+          {/* {isLoggedin ? (
             <li>
               <NavLink to="/dashboard" className={`nav-link px-2 link-dark`}>
                 Dashboard
@@ -70,7 +70,7 @@ export default function Header(props) {
             </li>
           ) : (
             ""
-          )}
+          )} */}
           <li>
             <NavLink to="/exercises" className={`nav-link px-2 link-dark`}>
               Exercises
@@ -81,11 +81,11 @@ export default function Header(props) {
               Workouts
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/programs" className={`nav-link px-2 link-dark`}>
               Programs
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         {isLoggedin ? (
           <>
