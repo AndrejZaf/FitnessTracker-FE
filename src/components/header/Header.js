@@ -8,13 +8,12 @@ import "./Header.css";
 export default function Header(props) {
   const [isLoggedin, setIsLoggedin] = useState(false);
 
-  const unsubscribe = store.subscribe(() => {
-    setIsLoggedin(store.getState().currentUser.email !== null);
-  });
-
   useEffect(() => {
+    const unsubscribe = store.subscribe(() => {
+      setIsLoggedin(store.getState().currentUser.email !== null);
+    });
     setIsLoggedin(getCurrentUser().email !== null);
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -101,10 +100,10 @@ export default function Header(props) {
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/settings">
+                  {/* <Dropdown.Item as={Link} to="/settings">
                     Settings
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
+                  </Dropdown.Item> */}
+                  {/* <Dropdown.Divider /> */}
                   <Dropdown.Item onClick={() => logout()}>
                     Log Out
                   </Dropdown.Item>

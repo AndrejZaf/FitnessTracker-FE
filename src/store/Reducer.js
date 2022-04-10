@@ -2,7 +2,8 @@ import { act } from "react-dom/test-utils";
 import * as actions from "./ActionTypes";
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
+  isLoggedIn: false,
   currentUser: {
     email: null,
     uid: null,
@@ -19,6 +20,7 @@ export default function reducer(state = initialState, action) {
     case actions.RETRIEVE_USER:
       return {
         ...state,
+        isLoggedIn: true,
         currentUser: {
           ...state.currentUser,
           email: action.payload.email,
@@ -33,6 +35,7 @@ export default function reducer(state = initialState, action) {
     case actions.CLEAR_CURRENT_USER:
       return {
         ...state,
+        isLoggedIn: false,
         currentUser: {
           ...state.currentUser,
           email: null,

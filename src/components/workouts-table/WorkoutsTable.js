@@ -11,6 +11,8 @@ export default function WorkoutsTable({
   handleAddWorkoutButton,
   setEditWorkout,
   setFocusMode,
+  setStartFocusMode,
+  setWorkoutUid,
 }) {
   function deleteWorkout(uid) {
     toggleLoading();
@@ -41,6 +43,8 @@ export default function WorkoutsTable({
               <FocusModeButton
                 workoutUid={workout.uid}
                 setFocusMode={setFocusMode}
+                setStartFocusMode={setStartFocusMode}
+                setWorkoutUid={setWorkoutUid}
               />
               <EditButton
                 handleAddWorkoutButton={handleAddWorkoutButton}

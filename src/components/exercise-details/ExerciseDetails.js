@@ -3,15 +3,28 @@ import { getExerciseByUid } from "../../services/ExerciseService";
 import AddWorkoutButton from "../add-workout-button/AddWorkout";
 import BackButton from "../back-button/BackButton";
 import "./ExerciseDetails.css";
+import store from "../../store/Store";
+import { getCurrentUser } from "../../store/StoreFacade";
+import EmptyButton from "../empty-button/EmptyButton";
 
 export default function ExerciseDetails(props) {
   const [exercise, setExercise] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const exerciseUid = props.match.params.uid;
+
   useEffect(() => {
-    const exerciseUid = props.match.params.uid;
+    setIsLoggedIn(store.getState().isLoggedIn);
+    const unsubscribe = store.subscribe(() => {
+      setIsLoggedIn(store.getState().isLoggedIn);
+    });
+
     getExerciseByUid(exerciseUid).then((response) =>
       setExercise(response.data)
     );
-  }, []);
+
+    return unsubscribe;
+  }, [exerciseUid]);
+
   return (
     <>
       <div className="page-header-exercises text-white d-flex justify-content-between">
@@ -22,7 +35,7 @@ export default function ExerciseDetails(props) {
           <h1>{exercise.name}</h1>
         </div>
         <div className="me-5 mt-3">
-          <AddWorkoutButton />
+          {isLoggedIn ? <AddWorkoutButton /> : <EmptyButton />}
         </div>
       </div>
       <div className="bottom-container">

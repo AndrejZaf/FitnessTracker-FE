@@ -7,19 +7,25 @@ import WorkoutsTable from "../components/workouts-table/WorkoutsTable";
 import store from "../store/Store";
 import { getUserWorkouts } from "../store/StoreFacade";
 import "./Workouts.css";
+import Newsletter from "./../components/newsletter/Newsletter";
+import FocusModeConfirmationModal from "../components/focus-mode-confirmation-modal/ConfirmationModal";
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState(getUserWorkouts());
   const [showModal, setShowModal] = useState(false);
   const [editWorkout, setEditWorkout] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [startFocusMode, setStartFocusMode] = useState(false);
+  const [workoutUid, setWorkoutUid] = useState("");
 
   useEffect(() => {
-    const unsubscribe = store.subscribe(() =>
-      setWorkouts(store.getState().currentUser.workouts)
-    );
-    return () => {
-      unsubscribe();
-    };
+    setWorkouts(store.getState().currentUser.workouts);
+    setIsLoggedIn(store.getState().isLoggedIn);
+    const unsubscribe = store.subscribe(() => {
+      setWorkouts(store.getState().currentUser.workouts);
+      setIsLoggedIn(store.getState().isLoggedIn);
+    });
+    return unsubscribe;
   }, []);
 
   function handleAddWorkoutButton() {
@@ -29,9 +35,13 @@ export default function Workouts() {
   function hideAddWorkout() {
     setShowModal(false);
   }
-
   return (
     <>
+      <FocusModeConfirmationModal
+        startFocusMode={startFocusMode}
+        workoutUid={workoutUid}
+        setStartFocusMode={setStartFocusMode}
+      />
       {showModal ? (
         <AddWorkout
           showModal={showModal}
@@ -51,39 +61,43 @@ export default function Workouts() {
         </div>
 
         <div className="me-5 mt-3">
-          <SynchronizeButton />
+          {isLoggedIn ? <SynchronizeButton /> : <EmptyButton />}
         </div>
       </div>
 
       <div className="bottom-container">
         <div className="container">
-          <div className="user-workouts mb-4">
-            <div className="row border-bottom">
-              <div className="col-md-4 col-6">
-                <h2 className="pb-2">Your Workouts</h2>
+          {isLoggedIn && (
+            <div className="user-workouts mb-4">
+              <div className="row border-bottom">
+                <div className="col-md-4 col-6">
+                  <h2 className="pb-2">Your Workouts</h2>
+                </div>
+                <div className="col-md-8 col-6 text-end">
+                  <button
+                    className="btn btn-primary purple-button"
+                    onClick={() => handleAddWorkoutButton()}
+                  >
+                    Add Workout
+                  </button>
+                </div>
               </div>
-              <div className="col-md-8 col-6 text-end">
-                <button
-                  className="btn btn-primary purple-button"
-                  onClick={() => handleAddWorkoutButton()}
-                >
-                  Add Workout
-                </button>
-              </div>
+              {workouts.length === 0 ? (
+                <p>
+                  Currently you don't have any workouts, feel free to create a
+                  new one by clicking on the "Add Workout" button
+                </p>
+              ) : (
+                <WorkoutsTable
+                  setEditWorkout={setEditWorkout}
+                  setStartFocusMode={setStartFocusMode}
+                  setWorkoutUid={setWorkoutUid}
+                  handleAddWorkoutButton={handleAddWorkoutButton}
+                  workouts={workouts}
+                />
+              )}
             </div>
-            {workouts.length === 0 ? (
-              <p>
-                Currently you don't have any workouts, feel free to create a new
-                one by clicking on the "Add Workout" button
-              </p>
-            ) : (
-              <WorkoutsTable
-                setEditWorkout={setEditWorkout}
-                handleAddWorkoutButton={handleAddWorkoutButton}
-                workouts={workouts}
-              />
-            )}
-          </div>
+          )}
 
           {/* <div className="admin-workouts mb-4">
             <h2 className="pb-2 border-bottom">Trending Workouts</h2>
@@ -115,6 +129,7 @@ export default function Workouts() {
             </div>
           </div>
         </div>
+        <Newsletter />
       </div>
     </>
   );

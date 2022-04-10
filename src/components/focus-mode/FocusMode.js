@@ -4,6 +4,7 @@ import { isLoading, toggleLoading } from "./../../store/StoreFacade";
 import { getWorkoutByUid } from "../../services/WorkoutService";
 import Timer from "../timer/Timer";
 import { Link } from "react-router-dom";
+import FocusModeCancelationModal from "../focus-mode-cancelation-modal/FocusModeCancelationModal";
 
 export default function FocusMode(props) {
   const workoutUidFromPath = props.match.params.uid;
@@ -17,6 +18,7 @@ export default function FocusMode(props) {
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [workoutFinished, setWorkoutFinished] = useState(false);
   const [leftButtonAvailability, setLeftButtonAvailability] = useState(true);
+  const [showCancelModal, setShowCancelModal] = useState(false);
 
   useEffect(() => {
     toggleLoading();
@@ -92,12 +94,17 @@ export default function FocusMode(props) {
   return (
     <div className="h-90">
       <div className="d-flex justify-content-center pt-5">
+        <FocusModeCancelationModal
+          showCancelModal={showCancelModal}
+          setShowCancelModal={setShowCancelModal}
+        />
         <svg
+          onClick={() => setShowCancelModal(true)}
           xmlns="http://www.w3.org/2000/svg"
           width="30"
           height="30"
           fill="currentColor"
-          className="bi bi-x-circle-fill"
+          className="bi bi-x-circle-fill cancel-focus-modal"
           viewBox="0 0 16 16"
         >
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />

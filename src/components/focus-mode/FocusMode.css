@@ -24,3 +24,11 @@
 .dot svg {
   fill: #8587dc;
 }
+
+.cancel-focus-modal {
+  cursor: pointer;
+}
+
+.cancel-focus-modal {
+  fill: #8587dc;
+}
