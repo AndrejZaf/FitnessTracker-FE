@@ -79,40 +79,28 @@ export default function Workouts() {
           </div> */}
           <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-              <img
-                src="bootstrap-themes.png"
-                class="d-block mx-lg-auto img-fluid"
-                alt="Bootstrap Themes"
-                width="700"
-                height="500"
-                loading="lazy"
-              />
+              <div class="ratio ratio-16x9">
+                <iframe
+                  src="https://www.youtube.com/embed/9g08kucPQtE?controls=0"
+                  title="YouTube video"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
             <div class="col-lg-6">
               <h1 class="display-5 fw-bold lh-1 mb-3">
-                Responsive left-aligned hero with image
+                Create Your Own Personalized Workout
               </h1>
               <p class="lead">
-                Quickly design and customize responsive mobile-first sites with
-                Bootstrap, the world’s most popular front-end open source
-                toolkit, featuring Sass variables and mixins, responsive grid
-                system, extensive prebuilt components, and powerful JavaScript
-                plugins.
+                With our creation wizard you can quickly create your own
+                workout, where you can target the desired muscles. Additionally
+                for each exercise in the workout you can determine how many sets
+                you want to do, and for each set you can specify additional
+                details such as weight, repetitions and rest period after each
+                exercise set. On top of that don't forget to use our specialized
+                focus mode, which will serve you as a great reminder during your
+                workout!
               </p>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button
-                  type="button"
-                  class="btn btn-primary btn-lg px-4 me-md-2"
-                >
-                  Primary
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary btn-lg px-4"
-                >
-                  Default
-                </button>
-              </div>
             </div>
           </div>
         </div>
