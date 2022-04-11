@@ -57,7 +57,7 @@ export default function Header(props) {
 
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <NavLink to="/" className={`nav-link px-2 link-secondary`}>
+            <NavLink exact to="/" className={`nav-link px-2 link-secondary`}>
               Home
             </NavLink>
           </li>

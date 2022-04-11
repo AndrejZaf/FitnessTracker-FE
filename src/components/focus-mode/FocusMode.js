@@ -59,6 +59,10 @@ export default function FocusMode(props) {
   }
 
   function handleRightClick() {
+    if (currentSet === undefined || currentSet.restPeriod === undefined) {
+      goToNextSetOrExercise();
+      return;
+    }
     setInitiateTimer(true);
     const time = new Date();
     time.setSeconds(time.getSeconds() + currentSet.restPeriod);
@@ -81,7 +85,6 @@ export default function FocusMode(props) {
         setCurrentSet(newExercise.sets[resetSetIndex]);
         setExerciseIndex(newExerciseIndex);
       } else {
-        console.log("Finished workout");
         setWorkoutFinished(true);
       }
     }
@@ -165,8 +168,8 @@ export default function FocusMode(props) {
                     alt={currentExercise.image}
                   />
                   <h2>{currentExercise.name}</h2>
-                  <h3>{currentSet.reps} Repetitions</h3>
-                  <h3>{currentSet.weight} kg</h3>
+                  <h3>{currentSet?.reps} Repetitions</h3>
+                  <h3>{currentSet?.weight} kg</h3>
                 </>
               )}
             </div>
