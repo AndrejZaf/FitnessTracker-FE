@@ -32,3 +32,8 @@
 .cancel-focus-modal {
   fill: #8587dc;
 }
+
+.btn-danger-border {
+  border: 1px solid #dc3545;
+  border-radius: 0rem 0rem 0rem 0.3rem !important;
+}

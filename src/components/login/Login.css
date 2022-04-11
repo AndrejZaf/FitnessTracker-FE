@@ -43,3 +43,14 @@ form,
   color: red;
   font-weight: 600;
 }
+
+.form-check-input:checked {
+  background-color: #8587dc !important;
+  border-color: #8587dc !important;
+}
+
+.form-check-input:focus {
+  border-color: #acadff;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(172 173 255 / 25%);
+}

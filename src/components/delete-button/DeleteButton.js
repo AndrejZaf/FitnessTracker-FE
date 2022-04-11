@@ -1,9 +1,18 @@
 import React from "react";
 
-export default function DeleteButton({ deleteWorkout, uid }) {
+export default function DeleteButton({
+  deleteWorkout,
+  uid,
+  setDeleteShowModal,
+  setWorkoutToDelete,
+  workoutName,
+}) {
   return (
     <div
-      onClick={() => deleteWorkout(uid)}
+      onClick={() => {
+        setDeleteShowModal(true);
+        setWorkoutToDelete(workoutName);
+      }}
       className="delete-workout-button"
       data-bs-toggle="tooltip"
       data-bs-placement="top"

@@ -113,7 +113,7 @@ export default function Exercises() {
               >
                 Clear filters
               </button>
-              <div className="row models">
+              <div className="row models mb-2">
                 <div className="col-lg-12 col-md-12 col-sm-6 col-6">
                   <div className="model">
                     <Model

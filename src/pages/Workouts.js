@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddWorkout from "../components/add-workout/AddWorkout";
 import EmptyButton from "../components/empty-button/EmptyButton";
-import FocusMode from "../components/focus-mode/FocusMode";
 import SynchronizeButton from "../components/synchronize-button/SynchronizeButton";
 import WorkoutsTable from "../components/workouts-table/WorkoutsTable";
 import store from "../store/Store";
@@ -9,6 +8,7 @@ import { getUserWorkouts } from "../store/StoreFacade";
 import "./Workouts.css";
 import Newsletter from "./../components/newsletter/Newsletter";
 import FocusModeConfirmationModal from "../components/focus-mode-confirmation-modal/ConfirmationModal";
+import DeleteWorkoutModal from "./../components/delete-workout-modal/DeleteWorkoutModal";
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState(getUserWorkouts());
@@ -17,6 +17,8 @@ export default function Workouts() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [startFocusMode, setStartFocusMode] = useState(false);
   const [workoutUid, setWorkoutUid] = useState("");
+  const [showDeleteModal, setDeleteShowModal] = useState(false);
+  const [workoutToDelete, setWorkoutToDelete] = useState({});
 
   useEffect(() => {
     setWorkouts(store.getState().currentUser.workouts);
@@ -37,6 +39,11 @@ export default function Workouts() {
   }
   return (
     <>
+      <DeleteWorkoutModal
+        showModal={showDeleteModal}
+        setShowModal={setDeleteShowModal}
+        workout={workoutToDelete}
+      />
       <FocusModeConfirmationModal
         startFocusMode={startFocusMode}
         workoutUid={workoutUid}
@@ -94,6 +101,8 @@ export default function Workouts() {
                   setWorkoutUid={setWorkoutUid}
                   handleAddWorkoutButton={handleAddWorkoutButton}
                   workouts={workouts}
+                  setWorkoutToDelete={setWorkoutToDelete}
+                  setDeleteShowModal={setDeleteShowModal}
                 />
               )}
             </div>

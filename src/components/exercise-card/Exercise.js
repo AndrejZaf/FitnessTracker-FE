@@ -9,7 +9,7 @@ export default function ExerciseCard({ name, target, equipment }) {
   const nameShort = truncate(name);
   return (
     <div className={`custom-card`}>
-      <div className="row justify-content-between">
+      <div className="row justify-content-between p-2">
         <div className="col-md-4">
           <img src={randomImage} />
         </div>

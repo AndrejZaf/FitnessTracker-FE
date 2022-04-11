@@ -13,16 +13,9 @@ export default function WorkoutsTable({
   setFocusMode,
   setStartFocusMode,
   setWorkoutUid,
+  setDeleteShowModal,
+  setWorkoutToDelete,
 }) {
-  function deleteWorkout(uid) {
-    toggleLoading();
-    deleteWorkoutByUid(uid)
-      .then(() => {
-        storeDeleteWorkoutByUid(uid);
-      })
-      .finally(() => toggleLoading());
-  }
-
   return (
     <table className="table table-striped">
       <thead>
@@ -51,7 +44,12 @@ export default function WorkoutsTable({
                 workout={workout}
                 setEditWorkout={setEditWorkout}
               />
-              <DeleteButton deleteWorkout={deleteWorkout} uid={workout.uid} />
+              <DeleteButton
+                uid={workout.uid}
+                workoutName={workout}
+                setWorkoutToDelete={setWorkoutToDelete}
+                setDeleteShowModal={setDeleteShowModal}
+              />
             </td>
           </tr>
         ))}
