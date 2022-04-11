@@ -44,7 +44,8 @@ export default function Login(props) {
         let accessToken = response.data.accessToken;
         let refreshToken = response.data.refreshToken;
         // if (rememberMe) {
-        storeTokens(accessToken, refreshToken, rememberMe);
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
         // } else {
         // sessionStorage.setItem("accessToken", accessToken);
         // sessionStorage.setItem("refreshToken", refreshToken);

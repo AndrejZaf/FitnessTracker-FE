@@ -39,7 +39,7 @@ export default function Home() {
       </div>
 
       <div className="container px-4 py-5" id="hanging-icons">
-        <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div className="row g-4 py-5 row-cols-1 row-cols-lg-2">
           <div className="col d-flex align-items-start">
             <div className="icon-square bg-light text-dark flex-shrink-0 me-3">
               {/* <svg className="bi" width="1em" height="1em">
@@ -76,11 +76,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="col d-flex align-items-start">
+          {/* <div className="col d-flex align-items-start">
             <div className="icon-square bg-light text-dark flex-shrink-0 me-3">
-              {/* <svg className="bi" width="1em" height="1em">
+              <svg className="bi" width="1em" height="1em">
                 <use xlink:href="#tools"></use>
-              </svg> */}
+              </svg>
             </div>
             <div>
               <h2>Programs</h2>
@@ -92,7 +92,7 @@ export default function Home() {
                 Programs
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
