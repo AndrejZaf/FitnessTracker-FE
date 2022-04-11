@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import ExerciseDetails from "./components/exercise-details/ExerciseDetails";
 import FocusMode from "./components/focus-mode/FocusMode";
+import ToastMessage from "./components/toast-message/ToastMessage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           </Switch>
         </Fragment>
       </Router>
+      <ToastMessage />
     </>
   );
 }

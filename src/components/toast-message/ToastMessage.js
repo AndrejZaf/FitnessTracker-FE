@@ -1,15 +1,21 @@
 import React from "react";
-import { Toast } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function ToastMessage({ show, setShow }) {
+export default function ToastMessage() {
   return (
-    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-      <Toast.Header>
-        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-        <strong className="me-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-      </Toast.Header>
-      <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-    </Toast>
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }

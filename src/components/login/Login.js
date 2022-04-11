@@ -5,6 +5,7 @@ import { retrieveUser } from "../../services/UserService";
 import { setCurrentUser, toggleLoading } from "../../store/StoreFacade";
 import errorCodes from "../../services/ErrorService";
 import "./Login.css";
+import { storeTokens } from "../../services/StorageService";
 
 export default function Login(props) {
   const [emailField, setEmailField] = useState("");
@@ -43,8 +44,7 @@ export default function Login(props) {
         let accessToken = response.data.accessToken;
         let refreshToken = response.data.refreshToken;
         // if (rememberMe) {
-        localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
+        storeTokens(accessToken, refreshToken, rememberMe);
         // } else {
         // sessionStorage.setItem("accessToken", accessToken);
         // sessionStorage.setItem("refreshToken", refreshToken);

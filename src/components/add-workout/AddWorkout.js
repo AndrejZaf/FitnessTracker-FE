@@ -12,6 +12,10 @@ import {
   updateUserWorkouts,
   updateWorkoutByUid,
 } from "./../../store/StoreFacade";
+import {
+  createWorkoutToast,
+  editWorkoutToast,
+} from "../../services/ToastService";
 
 export default function AddWorkout({
   showModal,
@@ -75,18 +79,22 @@ export default function AddWorkout({
     };
     if (editMode) {
       toggleLoading();
-      updateWorkout(workout.uid, upsertWorkout)
-        .then(() => updateWorkoutByUid(workout.uid, upsertWorkout))
-        .finally(() => toggleLoading());
+      editWorkoutToast(
+        updateWorkout(workout.uid, upsertWorkout)
+          .then(() => updateWorkoutByUid(workout.uid, upsertWorkout))
+          .finally(() => toggleLoading())
+      );
       setEditMode(false);
     } else {
       toggleLoading();
-      createWorkout(upsertWorkout)
-        .then((response) => {
-          upsertWorkout = { ...upsertWorkout, uid: response.data.uid };
-          updateUserWorkouts(upsertWorkout);
-        })
-        .finally(() => toggleLoading());
+      createWorkoutToast(
+        createWorkout(upsertWorkout)
+          .then((response) => {
+            upsertWorkout = { ...upsertWorkout, uid: response.data.uid };
+            updateUserWorkouts(upsertWorkout);
+          })
+          .finally(() => toggleLoading())
+      );
     }
     handleClose();
   }

@@ -9,7 +9,6 @@ import "./Workouts.css";
 import Newsletter from "./../components/newsletter/Newsletter";
 import FocusModeConfirmationModal from "../components/focus-mode-confirmation-modal/ConfirmationModal";
 import DeleteWorkoutModal from "./../components/delete-workout-modal/DeleteWorkoutModal";
-import ToastMessage from "../components/toast-message/ToastMessage";
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState(getUserWorkouts());

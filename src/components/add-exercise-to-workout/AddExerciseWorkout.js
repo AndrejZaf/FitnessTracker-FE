@@ -8,6 +8,7 @@ import ExerciseSets from "../add-workout/exericse-sets/ExerciseSets";
 import { addExerciseToWorkout } from "../../services/WorkoutService";
 import { toggleLoading } from "./../../store/StoreFacade";
 import { addExerciseToWorkout as storeAddExerciseToWorkout } from "./../../store/StoreFacade";
+import { addExerciseToWorkoutToast } from "../../services/ToastService";
 
 export default function AddExerciseWorkout({ exercise, show, setShow }) {
   const dummyRow = {
@@ -52,16 +53,18 @@ export default function AddExerciseWorkout({ exercise, show, setShow }) {
       ],
     };
     toggleLoading();
-    addExerciseToWorkout(selectedWorkout.uid, exerciseToBeAdded)
-      .then(() => console.log("Added"))
-      .finally(() => {
-        toggleLoading();
-        storeAddExerciseToWorkout(
-          selectedWorkout.uid,
-          exerciseToBeAdded.exercises[0]
-        );
-        setShow(false);
-      });
+    addExerciseToWorkoutToast(
+      addExerciseToWorkout(selectedWorkout.uid, exerciseToBeAdded)
+        .then(() => console.log("Added"))
+        .finally(() => {
+          toggleLoading();
+          storeAddExerciseToWorkout(
+            selectedWorkout.uid,
+            exerciseToBeAdded.exercises[0]
+          );
+          setShow(false);
+        })
+    );
   }
 
   function renderTitle(section) {

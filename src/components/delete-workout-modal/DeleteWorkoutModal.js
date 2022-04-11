@@ -4,6 +4,7 @@ import { Modal } from "react-bootstrap";
 import { deleteWorkoutByUid } from "../../services/WorkoutService";
 import { deleteWorkoutByUid as storeDeleteWorkoutByUid } from "./../../store/StoreFacade";
 import { toggleLoading } from "../../store/StoreFacade";
+import { deleteWorkoutToast } from "../../services/ToastService";
 
 export default function DeleteWorkoutModal({
   showModal,
@@ -14,14 +15,16 @@ export default function DeleteWorkoutModal({
 
   function deleteWorkout(uid) {
     toggleLoading();
-    deleteWorkoutByUid(uid)
-      .then(() => {
-        storeDeleteWorkoutByUid(uid);
-      })
-      .finally(() => {
-        toggleLoading();
-        handleClose();
-      });
+    deleteWorkoutToast(
+      deleteWorkoutByUid(uid)
+        .then(() => {
+          storeDeleteWorkoutByUid(uid);
+        })
+        .finally(() => {
+          toggleLoading();
+          handleClose();
+        })
+    );
   }
 
   return (
