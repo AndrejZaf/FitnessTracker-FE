@@ -4,12 +4,13 @@ import AddWorkoutButton from "../add-workout-button/AddWorkout";
 import BackButton from "../back-button/BackButton";
 import "./ExerciseDetails.css";
 import store from "../../store/Store";
-import { getCurrentUser } from "../../store/StoreFacade";
 import EmptyButton from "../empty-button/EmptyButton";
+import AddExerciseWorkout from "../add-exercise-to-workout/AddExerciseWorkout";
 
 export default function ExerciseDetails(props) {
   const [exercise, setExercise] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [show, setShow] = useState(false);
   const exerciseUid = props.match.params.uid;
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function ExerciseDetails(props) {
 
   return (
     <>
+      <AddExerciseWorkout show={show} setShow={setShow} exercise={exercise} />
       <div className="page-header-exercises text-white d-flex justify-content-between">
         <div className="ms-5 mt-3">
           <BackButton />
@@ -35,7 +37,11 @@ export default function ExerciseDetails(props) {
           <h1>{exercise.name}</h1>
         </div>
         <div className="me-5 mt-3">
-          {isLoggedIn ? <AddWorkoutButton /> : <EmptyButton />}
+          {isLoggedIn ? (
+            <AddWorkoutButton setShow={setShow} />
+          ) : (
+            <EmptyButton />
+          )}
         </div>
       </div>
       <div className="bottom-container">

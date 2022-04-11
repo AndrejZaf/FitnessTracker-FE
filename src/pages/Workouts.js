@@ -9,6 +9,7 @@ import "./Workouts.css";
 import Newsletter from "./../components/newsletter/Newsletter";
 import FocusModeConfirmationModal from "../components/focus-mode-confirmation-modal/ConfirmationModal";
 import DeleteWorkoutModal from "./../components/delete-workout-modal/DeleteWorkoutModal";
+import ToastMessage from "../components/toast-message/ToastMessage";
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState(getUserWorkouts());
@@ -23,10 +24,12 @@ export default function Workouts() {
   useEffect(() => {
     setWorkouts(store.getState().currentUser.workouts);
     setIsLoggedIn(store.getState().isLoggedIn);
+
     const unsubscribe = store.subscribe(() => {
       setWorkouts(store.getState().currentUser.workouts);
       setIsLoggedIn(store.getState().isLoggedIn);
     });
+
     return unsubscribe;
   }, []);
 
@@ -34,9 +37,6 @@ export default function Workouts() {
     setShowModal(true);
   }
 
-  function hideAddWorkout() {
-    setShowModal(false);
-  }
   return (
     <>
       <DeleteWorkoutModal
@@ -52,7 +52,7 @@ export default function Workouts() {
       {showModal ? (
         <AddWorkout
           showModal={showModal}
-          hideModal={hideAddWorkout}
+          setShowModal={setShowModal}
           workout={editWorkout}
           setEditWorkout={setEditWorkout}
         />

@@ -1,0 +1,10 @@
+.workout-row {
+  cursor: pointer;
+}
+
+.workout-list {
+  max-height: 150px;
+  min-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

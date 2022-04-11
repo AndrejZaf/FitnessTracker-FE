@@ -81,6 +81,16 @@ export function deleteWorkoutByUid(uid) {
   });
 }
 
+export function addExerciseToWorkout(uid, exercise) {
+  store.dispatch({
+    type: actions.ADD_EXERCISE_TO_WORKOUT,
+    payload: {
+      uid: uid,
+      exercise: exercise,
+    },
+  });
+}
+
 // const unsubscribe = store.subscribe(() => {
 //   console.log("Store changed!", store.getState());
 // });

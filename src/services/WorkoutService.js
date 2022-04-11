@@ -58,3 +58,18 @@ export async function getWorkoutByUid(uid) {
   };
   return await axios.get(`http://localhost:8080/api/workout/${uid}`, config);
 }
+
+export async function addExerciseToWorkout(uid, exercises) {
+  const token = localStorage.getItem("accessToken");
+  const bearerToken = `Bearer ${token}`;
+  const config = {
+    headers: {
+      Authorization: bearerToken,
+    },
+  };
+  return await axios.post(
+    `http://localhost:8080/api/workout/${uid}`,
+    exercises,
+    config
+  );
+}

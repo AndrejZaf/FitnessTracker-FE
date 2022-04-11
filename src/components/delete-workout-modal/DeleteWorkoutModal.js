@@ -40,19 +40,18 @@ export default function DeleteWorkoutModal({
         </Modal.Body>
         <Modal.Footer className="flex-nowrap p-0 custom-footer-border">
           <Button
-            className="btn btn-lg btn-danger fs-6 text-decoration-none col-6 m-0 rounded-0 btn-border text-white btn-danger-border"
-            variant="danger"
-            onClick={() => deleteWorkout(workout.uid)}
-          >
-            <strong>Delete</strong>
-          </Button>
-
-          <Button
             className="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 btn-border text-danger"
             variant="link"
             onClick={handleClose}
           >
             Cancel
+          </Button>
+          <Button
+            className="btn btn-lg btn-danger fs-6 text-decoration-none col-6 m-0 rounded-0 btn-border text-white btn-danger-border"
+            variant="danger"
+            onClick={() => deleteWorkout(workout.uid)}
+          >
+            <strong>Delete</strong>
           </Button>
         </Modal.Footer>
       </Modal>

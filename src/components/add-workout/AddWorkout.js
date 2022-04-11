@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import Button from "react-bootstrap/esm/Button";
+import { Button } from "react-bootstrap";
 import "./AddWorkout.css";
 import AddWorkoutGeneral from "./general/AddWorkoutGeneral";
 import AddExercise from "./add-exercise/AddExercise";
@@ -15,7 +15,7 @@ import {
 
 export default function AddWorkout({
   showModal,
-  hideModal,
+  setShowModal,
   workout,
   setEditWorkout,
 }) {
@@ -25,7 +25,6 @@ export default function AddWorkout({
     reps: "",
     restPeriod: "",
   };
-  const [show, setShow] = useState(showModal);
   const [exercises, setExercises] = useState([]);
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [section, setSection] = useState("General");
@@ -37,7 +36,6 @@ export default function AddWorkout({
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    console.log(workout);
     if (Object.keys(workout).length !== 0) {
       setWorkoutName(workout.name);
       setExercises(workout.exercises);
@@ -46,8 +44,7 @@ export default function AddWorkout({
   }, [workout]);
 
   const handleClose = () => {
-    hideModal();
-    setShow(false);
+    setShowModal(false);
     setEditMode(false);
     setWorkoutName("");
     setExercises([]);
@@ -228,7 +225,7 @@ export default function AddWorkout({
 
   return (
     <Modal
-      show={show}
+      show={showModal}
       onHide={handleClose}
       backdrop="static"
       size="lg"

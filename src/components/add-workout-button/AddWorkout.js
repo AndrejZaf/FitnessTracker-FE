@@ -1,9 +1,9 @@
 import React from "react";
 import "./AddWorkoutButton.css";
 
-export default function AddWorkoutButton() {
+export default function AddWorkoutButton({ setShow }) {
   return (
-    <div className="add-workout-button">
+    <div className="add-workout-button" onClick={() => setShow(true)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
