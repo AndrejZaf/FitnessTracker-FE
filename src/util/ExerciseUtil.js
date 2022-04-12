@@ -39,3 +39,43 @@ export function mapToDatabaseExerciseTarget(target) {
       return "";
   }
 }
+
+export function mapToModelTarget(target) {
+  switch (target) {
+    case "Neck":
+      // "Levator Scapulae"
+      return "neck";
+    case "Delts":
+      return ["front-deltoids", "back-deltoids"];
+    case "Biceps":
+      return "biceps";
+    case "Triceps":
+      return "triceps";
+    case "Forearms":
+      return "forearm";
+    case "Pectorals":
+      return "chest";
+    case "Abs":
+      return "abs";
+    case "Serratus Anterior":
+      return "obliques";
+    case "Abductors":
+      return "abductors";
+    case "Adductors":
+      return "adductor";
+    case "Quads":
+      return "quadriceps";
+    case "Calves":
+      return "calves";
+    case "Traps":
+      return "trapezius";
+    case "Upper Back":
+      return ["upper-back", "lower-back"];
+    case "Glutes":
+      return "gluteal";
+    case "Hamstrings":
+      return "hamstring";
+    default:
+      return "";
+  }
+}

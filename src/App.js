@@ -17,6 +17,7 @@ import TermsConditions from "./pages/TermsConditions";
 import ExerciseDetails from "./components/exercise-details/ExerciseDetails";
 import FocusMode from "./components/focus-mode/FocusMode";
 import ToastMessage from "./components/toast-message/ToastMessage";
+import PreviewWorkout from "./pages/PreviewWorkout";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/exercises" component={Exercises} exact />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/workouts" component={Workouts} exact />
+              <Route path="/workouts/:uid/preview" component={PreviewWorkout} />
               <Route path="/programs" component={Programs} />
               <Route path="/settings" component={UserSettings} />
               <Route path="/privacy-policy" component={PrivacyPolicy} />

@@ -3,6 +3,8 @@ import { deleteWorkoutByUid } from "../../services/WorkoutService";
 import DeleteButton from "../delete-button/DeleteButton";
 import EditButton from "../edit-button/EditButton";
 import FocusModeButton from "../focus-mode-button/FocusModeButton";
+import PreviewButton from "../preview-button/PreviewButton";
+import ShareButton from "../ShareButton/ShareButton";
 import { toggleLoading } from "./../../store/StoreFacade";
 import { deleteWorkoutByUid as storeDeleteWorkoutByUid } from "./../../store/StoreFacade";
 
@@ -39,6 +41,8 @@ export default function WorkoutsTable({
                 setStartFocusMode={setStartFocusMode}
                 setWorkoutUid={setWorkoutUid}
               />
+              <PreviewButton workoutUid={workout.uid} />
+              <ShareButton workoutUid={workout.uid} />
               <EditButton
                 handleAddWorkoutButton={handleAddWorkoutButton}
                 workout={workout}

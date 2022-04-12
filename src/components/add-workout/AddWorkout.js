@@ -236,6 +236,7 @@ export default function AddWorkout({
       show={showModal}
       onHide={handleClose}
       backdrop="static"
+      keyboard={false}
       size="lg"
       centered
     >

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import React, { useState, useMemo, useLayoutEffect } from "react";
 import "./Exercises.css";
 import { getExercises } from "../services/ExerciseService";
 import { toggleLoading } from "../store/StoreFacade";

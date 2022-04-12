@@ -146,6 +146,7 @@ export default function AddExerciseWorkout({ exercise, show, setShow }) {
       show={show}
       onHide={handleClose}
       backdrop="static"
+      keyboard={false}
       size="lg"
       centered
     >

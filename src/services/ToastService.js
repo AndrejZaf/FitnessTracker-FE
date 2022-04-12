@@ -39,3 +39,19 @@ export function addExerciseToWorkoutToast(promise) {
     error: "An error occurred, please try again later",
   });
 }
+
+export function copyToClipboardToast(promise) {
+  toast.promise(
+    promise,
+    {
+      pending: "Copying to clipboard",
+      success: "Successfully copied to clipboard",
+      error: "An error occurred, please try again later",
+    },
+    {
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+      autoClose: 5000,
+    }
+  );
+}
