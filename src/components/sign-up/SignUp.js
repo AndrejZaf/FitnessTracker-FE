@@ -5,11 +5,12 @@ import errorCodes from "../../services/ErrorService";
 import { toggleLoading } from "../../store/StoreFacade";
 import SignUpModal from "../sign-up-modal/SignUpModal";
 import "./SignUp.css";
+import { singUpToast } from "./../../services/ToastService";
 
 export default function SignUp(props) {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [showModal, setShowmodal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [emailField, setEmailField] = useState("");
   const [emailFieldError, setEmailFieldError] = useState(false);
   const [emailFieldErrorMessage, setEmailFieldErrorMessage] = useState("");
@@ -80,31 +81,32 @@ export default function SignUp(props) {
     }
 
     toggleLoading();
-    signup(email, password, measurementSystem)
-      .then(() => {
-        setShowmodal(true);
-        setEmailField(email);
-      })
-      .catch((error) => {
-        const actualError = { ...error };
-        const errorKey = actualError.response.data;
-        // const status = actualError.response.status;
-        setHasError(true);
-        setErrorMessage(errorCodes(errorKey));
-      })
-      .finally(() => toggleLoading());
+    singUpToast(
+      signup(email, password, measurementSystem)
+        .then(() => {
+          setShowModal(true);
+          setEmailField(email);
+        })
+        .catch((error) => {
+          const actualError = { ...error };
+          const errorKey = actualError.response.data;
+          // const status = actualError.response.status;
+          setHasError(true);
+          setErrorMessage(errorCodes(errorKey));
+        })
+        .finally(() => {
+          toggleLoading();
+        })
+    );
   }
+
   return (
     <>
-      {showModal ? (
-        <SignUpModal
-          show={showModal}
-          onHide={() => handleOnHideModal()}
-          email={emailField}
-        ></SignUpModal>
-      ) : (
-        ""
-      )}
+      <SignUpModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleOnHideModal={handleOnHideModal}
+      ></SignUpModal>
       <div className="custom-background d-flex align-items-center">
         <div className="container custom-container-login">
           <h1 className="text-center text-white">

@@ -6,6 +6,10 @@ export default function errorCodes(errorKey) {
       return "Couldn't find account associated with that email.";
     case "BAD_CREDENTIALS":
       return "Invalid credentials.";
+    case "USER_NOT_VERIFIED":
+      return "Please verify your account.";
+    case "USER_ALREADY_VERIFIED":
+      return "Your account has been verified already. Log in instead!";
     default:
       return "An error occurred, please try again.";
   }

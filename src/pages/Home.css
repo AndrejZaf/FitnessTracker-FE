@@ -1,3 +1,21 @@
 .homepage-girl {
   max-height: 550px;
 }
+
+.artwork {
+  height: 55%;
+  width: 55%;
+}
+
+.verification-header {
+  height: 200px;
+  background-color: #acadff;
+  background-image: url("../static/200605_FITNESS_FASHION_TEST5039_R3+copy.jpg");
+  background-position-y: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.verification-image {
+  width: 220px;
+}

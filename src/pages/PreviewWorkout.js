@@ -69,7 +69,7 @@ export default function PreviewWorkout(props) {
               </div>
             </div>
             <div className="models">
-              <div className="d-flex justify-content-center models mb-2">
+              <div className="d-flex justify-content-center models mb-2 mt-2">
                 <div className="preview-model">
                   <Model data={musclesData} highlightedColors={["#8587DC"]} />
                 </div>
@@ -114,7 +114,7 @@ export default function PreviewWorkout(props) {
                                     There are no sets for the current exercise!
                                   </p>
                                 ) : (
-                                  <ul>
+                                  <ul className="list-unstyled">
                                     {exercise.sets.map((set, index) => (
                                       <li key={index}>
                                         <strong>Set {index + 1}</strong> -{" "}

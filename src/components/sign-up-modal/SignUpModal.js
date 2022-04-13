@@ -1,10 +1,19 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 
-export default function SignUpModal(props) {
+export default function SignUpModal({
+  showModal,
+  setShowModal,
+  handleOnHideModal,
+}) {
+  const onHide = () => {
+    handleOnHideModal();
+    setShowModal(false);
+  };
   return (
     <Modal
-      {...props}
+      show={showModal}
+      onHide={onHide}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -14,7 +23,7 @@ export default function SignUpModal(props) {
           Thank you for joining!
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="text-center">
         {/* <h4>Centered Modal</h4> */}
         <p>
           Please check your inbox, a verification link has been sent in order to

@@ -55,3 +55,59 @@ export function copyToClipboardToast(promise) {
     }
   );
 }
+
+export function singUpToast(promise) {
+  toast.promise(
+    promise,
+    {
+      pending: "Loading",
+    },
+    {
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+      autoClose: 5000,
+    }
+  );
+}
+
+export function resetPasswordToast(promise) {
+  toast.promise(
+    promise,
+    {
+      pending: "Loading",
+    },
+    {
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+      autoClose: 5000,
+    }
+  );
+}
+
+export function requestVerificationToken(promise) {
+  toast.promise(
+    promise,
+    {
+      pending: "Sending an email",
+    },
+    {
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+      autoClose: 5000,
+    }
+  );
+}
+
+export function requestResetPasswordToken(promise) {
+  toast.promise(
+    promise,
+    {
+      pending: "Sending an email",
+    },
+    {
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+      autoClose: 5000,
+    }
+  );
+}

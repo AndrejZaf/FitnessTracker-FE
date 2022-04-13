@@ -12,11 +12,13 @@ export default function Login(props) {
   const [passwordField, setPasswordField] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [verificationStatus, setVerificationStatus] = useState(false);
 
   function onEmailFieldChange(fieldValue) {
     if (hasError) {
       setHasError(false);
       setErrorMessage("");
+      setVerificationStatus(false);
     }
     setEmailField(fieldValue);
   }
@@ -25,6 +27,7 @@ export default function Login(props) {
     if (hasError) {
       setHasError(false);
       setErrorMessage("");
+      setVerificationStatus(false);
     }
     setPasswordField(fieldValue);
   }
@@ -58,6 +61,9 @@ export default function Login(props) {
       .catch((error) => {
         const actualError = { ...error };
         const errorKey = actualError.response.data;
+        if (errorKey === "USER_NOT_VERIFIED") {
+          setVerificationStatus(true);
+        }
         setHasError(true);
         setErrorMessage(errorCodes(errorKey));
       })
@@ -108,6 +114,15 @@ export default function Login(props) {
             </div>
           </div>
           {hasError ? <p className="text-red">{errorMessage}</p> : ""}
+          {verificationStatus ? (
+            <p>
+              <Link to="/verify" className="text-white">
+                Request a new verification code
+              </Link>
+            </p>
+          ) : (
+            ""
+          )}
           <button
             type="submit"
             className="btn btn-primary purple-button button-custom-size"

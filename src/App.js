@@ -18,6 +18,11 @@ import ExerciseDetails from "./components/exercise-details/ExerciseDetails";
 import FocusMode from "./components/focus-mode/FocusMode";
 import ToastMessage from "./components/toast-message/ToastMessage";
 import PreviewWorkout from "./pages/PreviewWorkout";
+import PageNotFound from "./pages/PageNotFound";
+import EmailVerification from "./pages/EmailVerification";
+import VerificationRequest from "./components/verification-request/VerificationRequest";
+import ForgotPasswordRequest from "./components/forgot-password/ForgotPasswordRequest";
+import ResetPassword from "./components/reset-password/ResetPassword";
 
 function App() {
   return (
@@ -27,7 +32,10 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/verify" component={VerificationRequest} />
             <Route path="/workouts/:uid/focus" component={FocusMode} />
+            <Route path="/forgot-password" component={ForgotPasswordRequest} />
+            <Route path="/:uid/reset-password" component={ResetPassword} />
             <Fragment>
               <Header />
               <Route exact path="/" component={Home} />
@@ -39,7 +47,9 @@ function App() {
               <Route path="/settings" component={UserSettings} />
               <Route path="/privacy-policy" component={PrivacyPolicy} />
               <Route path="/terms-and-conditions" component={TermsConditions} />
+              <Route path="/:uid/verify" component={EmailVerification} />
               <Route path={"/exercises/:uid"} component={ExerciseDetails} />
+              {/* <Route path="*" component={PageNotFound} /> */}
               <Footer />
             </Fragment>
           </Switch>
