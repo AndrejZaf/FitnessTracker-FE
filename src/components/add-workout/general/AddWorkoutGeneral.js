@@ -11,6 +11,7 @@ export default function AddWorkoutGeneral({
   setSetItems,
   setEditExercise,
   setWorkoutName,
+  setSetIndex,
   workoutName,
 }) {
   const onDragEnd = (result) => {
@@ -81,6 +82,7 @@ export default function AddWorkoutGeneral({
                             provided={provided}
                             snapshot={snapshot}
                             exercise={exercise}
+                            setSetIndex={setSetIndex}
                             deleteRow={() => deleteRow(index)}
                             changeSection={changeSection}
                             setSetItems={setSetItems}

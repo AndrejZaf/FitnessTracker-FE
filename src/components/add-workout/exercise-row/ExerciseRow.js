@@ -12,6 +12,7 @@ export default function ExerciseRow({
   setSetItems,
   setSelectedExercise,
   setEditExercise,
+  setSetIndex,
 }) {
   return (
     <div
@@ -29,6 +30,7 @@ export default function ExerciseRow({
         <div className="col-lg-6 col-md-6 col-sm-6 col-6">
           <EditRowButton
             exercise={exercise}
+            setSetIndex={setSetIndex}
             setSetItems={setSetItems}
             setSelectedExercise={setSelectedExercise}
             changeSection={changeSection}

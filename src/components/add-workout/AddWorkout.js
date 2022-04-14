@@ -139,6 +139,7 @@ export default function AddWorkout({
             setExercises={setExercises}
             setSelectedExercise={setSelectedExercise}
             setSetItems={setSetItems}
+            setSetIndex={setSetIndex}
             setEditExercise={setEditExercise}
             setWorkoutName={setWorkoutName}
             workoutName={workoutName}

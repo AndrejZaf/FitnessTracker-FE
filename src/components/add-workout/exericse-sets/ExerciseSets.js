@@ -10,6 +10,7 @@ export default function ExerciseSets({
   setIndex,
   setSetIndex,
 }) {
+  console.log(setItems, setIndex, exercise);
   const onDragEnd = (result) => {
     if (setItems.length === 1 || result.destination === null) return;
     const newItems = setItems;

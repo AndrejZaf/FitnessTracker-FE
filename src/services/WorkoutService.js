@@ -49,14 +49,7 @@ export async function deleteWorkoutByUid(uid) {
 }
 
 export async function getWorkoutByUid(uid) {
-  const token = localStorage.getItem("accessToken");
-  const bearerToken = `Bearer ${token}`;
-  const config = {
-    headers: {
-      Authorization: bearerToken,
-    },
-  };
-  return await axios.get(`http://localhost:8080/api/workout/${uid}`, config);
+  return await axios.get(`http://localhost:8080/api/workout/${uid}`);
 }
 
 export async function addExerciseToWorkout(uid, exercises) {

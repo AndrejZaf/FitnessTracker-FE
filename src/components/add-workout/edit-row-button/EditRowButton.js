@@ -5,6 +5,7 @@ export default function EditRowButton({
   setSelectedExercise,
   exercise,
   setSetItems,
+  setSetIndex,
   setEditExercise,
 }) {
   return (
@@ -13,6 +14,7 @@ export default function EditRowButton({
         const newExerciseState = exercise.sets.map(
           (set, index) => (set = { id: `${index}`, ...set })
         );
+        setSetIndex(exercise.sets.length + 1);
         setSetItems(newExerciseState);
         setSelectedExercise(exercise);
         setEditExercise(exercise);
