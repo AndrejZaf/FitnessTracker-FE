@@ -18,7 +18,7 @@ export default function SignUp(props) {
   const [passwordFieldError, setPasswordFieldError] = useState(false);
   const [passwordFieldMessage, setPasswordFieldMessage] = useState("");
   const [confirmPasswordField, setConfirmPasswordField] = useState("");
-  const [measurementSystemField, setMeasurementSystemField] = useState("");
+  // const [measurementSystemField, setMeasurementSystemField] = useState("");
 
   function handleOnHideModal() {
     props.history.push("/login");
@@ -52,9 +52,9 @@ export default function SignUp(props) {
     setConfirmPasswordField(fieldValue);
   }
 
-  function onMeasurementFieldChange(fieldValue) {
-    setMeasurementSystemField(fieldValue);
-  }
+  // function onMeasurementFieldChange(fieldValue) {
+  //   setMeasurementSystemField(fieldValue);
+  // }
 
   function determineButtonAvailability() {
     return (
@@ -63,9 +63,9 @@ export default function SignUp(props) {
       passwordFieldError ||
       emailField === "" ||
       passwordField === "" ||
-      confirmPasswordField === "" ||
-      measurementSystemField === ""
+      confirmPasswordField === ""
     );
+    //measurementSystemField === ""
   }
 
   function signUp(e) {
@@ -73,7 +73,7 @@ export default function SignUp(props) {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmedPassword = e.target.confirmPassword.value;
-    const measurementSystem = e.target.btnradio.value;
+    const measurementSystem = "METRIC_SYSTEM";
     if (password !== confirmedPassword) {
       setHasError(true);
       setErrorMessage("The password does not match!");
@@ -146,7 +146,7 @@ export default function SignUp(props) {
               />
               <label htmlFor="confirmPassword">Confirm your password</label>
             </div>
-            <div className="mb-3 text-center">
+            {/* <div className="mb-3 text-center">
               <p>Measurement System</p>
               <div
                 className="btn-group"
@@ -179,7 +179,7 @@ export default function SignUp(props) {
                   Imperial
                 </label>
               </div>
-            </div>
+            </div> */}
             {/* PRIVACY POLICY DONT FORGET ABOUT THIS */}
             {hasError ? <p className="text-red">{errorMessage}</p> : ""}
             <button

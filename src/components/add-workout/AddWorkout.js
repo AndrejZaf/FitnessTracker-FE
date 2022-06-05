@@ -102,7 +102,11 @@ export default function AddWorkout({
   function renderTitle(section) {
     switch (section) {
       case "General":
-        return <ModalHeader text={"Create Your Own Workout"} />;
+        return (
+          <ModalHeader
+            text={!editMode ? "Create Your Own Workout" : "Edit Your Workout"}
+          />
+        );
       case "Add Exercise":
         return (
           <ModalHeader

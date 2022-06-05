@@ -40,7 +40,7 @@ export default function Login(props) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const rememberMe = e.target.rememberMe.checked;
+    // const rememberMe = e.target.rememberMe.checked;
     toggleLoading();
     login(email, password)
       .then((response) => {
@@ -97,7 +97,7 @@ export default function Login(props) {
             />
             <label htmlFor="password">Password</label>
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <div className="form-check">
               <input
                 type="checkbox"
@@ -112,7 +112,7 @@ export default function Login(props) {
                 Remember me
               </label>
             </div>
-          </div>
+          </div> */}
           {hasError ? <p className="text-red">{errorMessage}</p> : ""}
           {verificationStatus ? (
             <p>

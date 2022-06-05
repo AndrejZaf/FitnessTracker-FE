@@ -114,7 +114,7 @@ export default function Workouts() {
             <div className="col-10 col-sm-8 col-lg-6">
               <div className="ratio ratio-16x9">
                 <iframe
-                  src="https://www.youtube.com/embed/9g08kucPQtE?controls=0"
+                  src="https://www.youtube.com/embed/7E-afo-pVO8?controls=0"
                   title="YouTube video"
                   allowFullScreen={true}
                 ></iframe>
@@ -137,7 +137,7 @@ export default function Workouts() {
             </div>
           </div>
         </div>
-        <Newsletter />
+        {!isLoggedIn && <Newsletter />}
       </div>
     </>
   );

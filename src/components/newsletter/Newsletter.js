@@ -8,7 +8,7 @@ export default function Newsletter() {
       <div className="newsletter-bg d-flex justify-content-center">
         <div className="align-self-center">
           <div className="text-center text-white">
-            <h3>Sign in to our Newsletter</h3>
+            <h3>Sign up to our Newsletter</h3>
             <h6>Stay in the loop with everything you need to know.</h6>
           </div>
           <div className="col-md">
